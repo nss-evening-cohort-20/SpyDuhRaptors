@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpyDuhRaptorsAPI", "SpyDuhRaptorsAPI\SpyDuhRaptorsAPI.csproj", "{A6584D8D-CAF5-4B2B-BC82-239F84CB7787}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6584D8D-CAF5-4B2B-BC82-239F84CB7787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6584D8D-CAF5-4B2B-BC82-239F84CB7787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6584D8D-CAF5-4B2B-BC82-239F84CB7787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6584D8D-CAF5-4B2B-BC82-239F84CB7787}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F8C1058-D628-4B9D-99D0-FCF12D5D0AB1}
+	EndGlobalSection
+EndGlobal
