@@ -181,7 +181,7 @@ GO
 CREATE TABLE [dbo].[Users](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](255) NULL,
-	[EmailId] [int] NULL,
+	[Email] [nvarchar](255) NULL,
 	[CountryId] [int] NULL,
 	[UserName] [nvarchar](255) NULL,
 	[Password] [nvarchar](255) NULL,
