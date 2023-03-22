@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>24ac03ed-a923-4aa3-a376-ff096aadfbdb</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Docs\" />
-    <Folder Include="SQL\" />
-    <Folder Include="Repositories\" />
+    <Folder Include="Dto\" />
   </ItemGroup>
 
 </Project>
