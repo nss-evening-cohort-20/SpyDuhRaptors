@@ -12,7 +12,7 @@ namespace SpyDuhRaptorsAPI.Repositories
                                                  ,s.ServiceId
                                                  ,s.AvalibleToHire
                                                  ,sl.Id
-                                                 ,sl.[Name]
+                                                 ,sl.Name
                                            FROM Services s
                                            JOIN ServicesLookUp sl on sl.Id = s.ServiceId ";
 
