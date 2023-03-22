@@ -6,8 +6,8 @@ namespace SpyDuhRaptorsAPI.Repositories
     {
         void Add(User variety);
         void Delete(int id);
-        User Get(int id);
-        List<User> GetAll();
+        UserDto Get(int id);
+        List<UserDto> GetAll();
         void Update(User variety);
     }
 }

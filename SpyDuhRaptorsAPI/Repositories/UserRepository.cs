@@ -17,30 +17,31 @@ namespace SpyDuhRaptorsAPI.Repositories
             get { return new SqlConnection(_connectionString); }
         }
 
-        public List<User> GetAll()
+        public List<UserDto> GetAll()
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Users";
+                    cmd.CommandText = "select U.ID, U.Name, C.CountryName as 'Country', U.UserName, AL.Name as 'Agency', U.Type, A.Name as 'Assignment', A.Location as 'Assignment Location', A.StartTS as 'Start Time', A.EndTS as 'End Time', A.IsUnderCover as 'Undercover' from Users U JOIN Assignment A on U.AssignmentId = A.ID JOIN AgencyLookup AL on U.AgencyId = AL.ID JOIN Countries C on U.CountryId = c.Id ";
                     var reader = cmd.ExecuteReader();
-                    var varieties = new List<User>();
+                    var varieties = new List<UserDto>();
                     while (reader.Read())
                     {
-                        var variety = new User()
+                        var variety = new UserDto()
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                            Name = reader.GetString(reader.GetOrdinal("Title")),
+                            Name = reader.GetString(reader.GetOrdinal("Name")),
+                            Country = reader.GetString(reader.GetOrdinal("Country")),
                             UserName = reader.GetString(reader.GetOrdinal("UserName")),
-                            Password = reader.GetString(reader.GetOrdinal("Password")),
+                            Agency = reader.GetString(reader.GetOrdinal("Agency")),
                             Type = reader.GetString(reader.GetOrdinal("Type")),
-                            HandlerId = reader.GetInt32(reader.GetOrdinal("HandlerId")),
-                            Email = reader.GetString(reader.GetOrdinal("Email")),
-                            CountryId = reader.GetInt32(reader.GetOrdinal("CountryId")),
-                            AgencyId = reader.GetInt32(reader.GetOrdinal("AgencyId")),
-                            AssignmentId = reader.GetInt32(reader.GetOrdinal("AssignmentId")),
+                            Assignment = reader.GetString(reader.GetOrdinal("Assignment")),
+                            AssignmentLocation = reader.GetString(reader.GetOrdinal("Assignment Location")),
+                            StartTS = reader.GetDateTime(reader.GetOrdinal("StartTS")),
+                            EndTS = reader.GetDateTime(reader.GetOrdinal("EndTS")),
+                            IsUnderCover = reader.GetBoolean(reader.GetOrdinal("IsUnderCover")),
                         };
                         varieties.Add(variety);
                     }
@@ -52,34 +53,35 @@ namespace SpyDuhRaptorsAPI.Repositories
             }
         }
 
-        public User Get(int id)
+        public UserDto Get(int id)
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT * FROM Users WHERE Id = @id;";
+                    cmd.CommandText = @"select U.ID, U.Name, C.CountryName as 'Country', U.UserName, AL.Name as 'Agency', U.Type, A.Name as 'Assignment', A.Location as 'Assignment Location', A.StartTS as 'Start Time', A.EndTS as 'End Time', A.IsUnderCover as 'Undercover' from Users U JOIN Assignment A on U.AssignmentId = A.ID JOIN AgencyLookup AL on U.AgencyId = AL.ID JOIN Countries C on U.CountryId = c.Id WHERE U.Id = @id;";
                     cmd.Parameters.AddWithValue("@id", id);
 
                     var reader = cmd.ExecuteReader();
 
-                    User variety = null;
+                    UserDto variety = null;
 
                     if (reader.Read())
                     {
-                        variety = new User()
+                        variety = new UserDto()
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                            Name = reader.GetString(reader.GetOrdinal("Title")),
+                            Name = reader.GetString(reader.GetOrdinal("Name")),
+                            Country = reader.GetString(reader.GetOrdinal("Country")),
                             UserName = reader.GetString(reader.GetOrdinal("UserName")),
-                            Password = reader.GetString(reader.GetOrdinal("Password")),
+                            Agency = reader.GetString(reader.GetOrdinal("Agency")),
                             Type = reader.GetString(reader.GetOrdinal("Type")),
-                            HandlerId = reader.GetInt32(reader.GetOrdinal("HandlerId")),
-                            Email = reader.GetString(reader.GetOrdinal("Email")),
-                            CountryId = reader.GetInt32(reader.GetOrdinal("CountryId")),
-                            AgencyId = reader.GetInt32(reader.GetOrdinal("AgencyId")),
-                            AssignmentId = reader.GetInt32(reader.GetOrdinal("AssignmentId")),
+                            Assignment = reader.GetString(reader.GetOrdinal("Assignment")),
+                            AssignmentLocation = reader.GetString(reader.GetOrdinal("Assignment Location")),
+                            StartTS = reader.GetDateTime(reader.GetOrdinal("StartTS")),
+                            EndTS = reader.GetDateTime(reader.GetOrdinal("EndTS")),
+                            IsUnderCover = reader.GetBoolean(reader.GetOrdinal("IsUnderCover")),
                         };
                     }
 
