@@ -6,6 +6,7 @@
         public int UserId { get; set; }
         public int ServiceId { get; set; }
         public bool AvailibleToHire { get; set; }
+        public Services Service { get; set; }
 
     }
 }

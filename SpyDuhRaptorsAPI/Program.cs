@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using SpyDuhRaptorsAPI.Repositories;
 
 namespace SpyDuhRaptorsAPI
 {
@@ -9,7 +10,7 @@ namespace SpyDuhRaptorsAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddTransient<IServicesRepository, ServicesRepository>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
