@@ -13,9 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="SQL\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>

@@ -13,8 +13,8 @@ namespace SpyDuhRaptorsAPI.Repositories
                                                  ,s.AvalibleToHire
                                                  ,sl.Id
                                                  ,sl.Name
-                                           FROM Services s
-                                           JOIN ServicesLookUp sl on sl.Id = s.ServiceId ";
+                                                FROM Services s
+                                                JOIN ServicesLookUp sl on sl.Id = s.ServiceId ";
 
         private const string _servicesInsert = @"INSERT INTO Services
                                                (Id, ServiceId, AvailibleToHire)
