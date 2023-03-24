@@ -4,7 +4,7 @@ namespace SpyDuhRaptorsAPI.Repositories
 {
     public interface IRelationshipsRepository
     {
-        IList<UserDto> GetAllFriends(int userId);
-        IList<UserDto> GetAllEnemies(int userId);
+        IList<RelationshipsDto> GetAllFriends(int userId);
+        IList<RelationshipsDto> GetAllEnemies(int userId);
     }
 }

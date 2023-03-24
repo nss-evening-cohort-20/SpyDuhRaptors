@@ -10,7 +10,7 @@ namespace SpyDuhRaptorsAPI.Repositories
         {
         }
 
-        public IList<UserDto> GetAllEnemies(int userId)
+        public IList<RelationshipsDto> GetAllEnemies(int userId)
         {
             using (var conn = Connection)
             {
@@ -50,10 +50,10 @@ namespace SpyDuhRaptorsAPI.Repositories
 
                     var reader = cmd.ExecuteReader();
 
-                    var enemiesDtoList = new List<UserDto>();
+                    var enemiesDtoList = new List<RelationshipsDto>();
                     while (reader.Read())
                     {
-                        enemiesDtoList.Add(new UserDto(
+                        enemiesDtoList.Add(new RelationshipsDto(
 
                             DbUtils.GetInt(reader, "Id"),
                             DbUtils.GetString(reader, "Name"),
@@ -73,7 +73,7 @@ namespace SpyDuhRaptorsAPI.Repositories
             }
         }
 
-        public IList<UserDto> GetAllFriends(int userId)
+        public IList<RelationshipsDto> GetAllFriends(int userId)
         {
             using (var conn = Connection)
             {
@@ -113,10 +113,10 @@ namespace SpyDuhRaptorsAPI.Repositories
 
                     var reader = cmd.ExecuteReader();
 
-                    var friendsDtoList = new List<UserDto>();
+                    var friendsDtoList = new List<RelationshipsDto>();
                     while (reader.Read())
                     {
-                        friendsDtoList.Add(new UserDto(
+                        friendsDtoList.Add(new RelationshipsDto(
 
                             DbUtils.GetInt(reader, "Id"),
                             DbUtils.GetString(reader, "Name"),

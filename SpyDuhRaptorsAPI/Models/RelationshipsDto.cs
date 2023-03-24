@@ -1,6 +1,6 @@
 ﻿namespace SpyDuhRaptorsAPI.Models
 {
-    public record class UserDto(
+    public record class RelationshipsDto(
         int Id, 
         string Name, 
         string UserName, 
