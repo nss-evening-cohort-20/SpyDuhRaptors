@@ -39,12 +39,13 @@ namespace SpyDuhRaptorsAPI.Repositories
                             Type = reader.GetString(reader.GetOrdinal("Type")),
                             Assignment = reader.GetString(reader.GetOrdinal("Assignment")),
                             AssignmentLocation = reader.GetString(reader.GetOrdinal("Assignment Location")),
-                            StartTS = reader.GetDateTime(reader.GetOrdinal("StartTS")),
-                            EndTS = reader.GetDateTime(reader.GetOrdinal("EndTS")),
-                            IsUnderCover = reader.GetBoolean(reader.GetOrdinal("IsUnderCover")),
+                            StartTS = reader.GetDateTime(reader.GetOrdinal("Start Time")),
+                            EndTS = reader.GetDateTime(reader.GetOrdinal("End Time")),
+                            IsUnderCover = reader.GetBoolean(reader.GetOrdinal("Undercover")),
                         };
                         varieties.Add(variety);
                     }
+
 
                     reader.Close();
 
@@ -79,9 +80,9 @@ namespace SpyDuhRaptorsAPI.Repositories
                             Type = reader.GetString(reader.GetOrdinal("Type")),
                             Assignment = reader.GetString(reader.GetOrdinal("Assignment")),
                             AssignmentLocation = reader.GetString(reader.GetOrdinal("Assignment Location")),
-                            StartTS = reader.GetDateTime(reader.GetOrdinal("StartTS")),
-                            EndTS = reader.GetDateTime(reader.GetOrdinal("EndTS")),
-                            IsUnderCover = reader.GetBoolean(reader.GetOrdinal("IsUnderCover")),
+                            StartTS = reader.GetDateTime(reader.GetOrdinal("Start Time")),
+                            EndTS = reader.GetDateTime(reader.GetOrdinal("End Time")),
+                            IsUnderCover = reader.GetBoolean(reader.GetOrdinal("Undercover")),
                         };
                     }
 
@@ -100,17 +101,17 @@ namespace SpyDuhRaptorsAPI.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
 
-                    cmd.CommandText = @"INSERT INTO USERS VALES (@Name,@CountryID,@Username,@Password,@AgencyID,@Type,@HandlerID,@AssignmentID,@Email)";
+                    cmd.CommandText = @"INSERT INTO USERS (Name, CountryID, Username, Password, AgencyId, Type, HandlerId, AssignmentId, Email) OUTPUT INSERTED.Id VALUES (@Name,@CountryID,@Username,@Password,@AgencyID,@Type,@HandlerID,@AssignmentID,@Email)";
 
 
                     cmd.Parameters.AddWithValue("@Name", variety.Name);
                     cmd.Parameters.AddWithValue("@CountryID", variety.CountryId);
                     cmd.Parameters.AddWithValue("@Username", variety.UserName);
                     cmd.Parameters.AddWithValue("@Password", variety.Password);
-                    cmd.Parameters.AddWithValue("@AgencyID", variety.AgencyId);
+                    cmd.Parameters.AddWithValue("@AgencyId", variety.AgencyId);
                     cmd.Parameters.AddWithValue("@Type", variety.Type);
-                    cmd.Parameters.AddWithValue("@HandlerID", variety.HandlerId);
-                    cmd.Parameters.AddWithValue("@AssignmentID", variety.AssignmentId);
+                    cmd.Parameters.AddWithValue("@HandlerId", variety.HandlerId);
+                    cmd.Parameters.AddWithValue("@AssignmentId", variety.AssignmentId);
                     cmd.Parameters.AddWithValue("@Email", variety.Email);
 
 
@@ -137,7 +138,7 @@ namespace SpyDuhRaptorsAPI.Repositories
                                Type = @Type,
                                HandlerId = @HandlerId,
                                AssignmentId = @AssignmentId,
-                               Email = @Email,
+                               Email = @Email
                          WHERE Id = @id";
                     cmd.Parameters.AddWithValue("@id", variety.Id);
                     cmd.Parameters.AddWithValue("@Name", variety.Name);

@@ -83,7 +83,7 @@ namespace SpyDuhRaptorsAPI.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
 
-                    cmd.CommandText = @"INSERT INTO Countries VALES (@CountryName, @Region)";
+                    cmd.CommandText = @"INSERT INTO Countries (CountryName, Region) OUTPUT INSERTED.Id VALUES (@CountryName, @Region)";
 
 
                     cmd.Parameters.AddWithValue("@CountryName", variety.CountryName);
@@ -104,7 +104,7 @@ namespace SpyDuhRaptorsAPI.Repositories
                     cmd.CommandText = @"
                         UPDATE Countries 
                            SET CountryName = @CountryName,
-                               Region = @Region,
+                               Region = @Region
                          WHERE Id = @id";
                     cmd.Parameters.AddWithValue("@id", variety.Id);
                     cmd.Parameters.AddWithValue("@CountryName", variety.CountryName);

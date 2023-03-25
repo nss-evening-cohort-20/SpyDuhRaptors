@@ -81,7 +81,7 @@ namespace SpyDuhRaptorsAPI.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
 
-                    cmd.CommandText = @"INSERT INTO AgencyLookup VALES (@Name)";
+                    cmd.CommandText = @"INSERT INTO AgencyLookup (Name) OUTPUT INSERTED.Id VALUES (@Name)";
 
 
                     cmd.Parameters.AddWithValue("@Name", variety.Name);
@@ -100,7 +100,7 @@ namespace SpyDuhRaptorsAPI.Repositories
                 {
                     cmd.CommandText = @"
                         UPDATE AgencyLookup 
-                           SET Name = @Name,
+                           SET Name = @Name
                          WHERE Id = @id";
                     cmd.Parameters.AddWithValue("@id", variety.Id);
                     cmd.Parameters.AddWithValue("@Name", variety.Name);
