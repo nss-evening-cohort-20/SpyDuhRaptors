@@ -7,7 +7,7 @@ namespace SpyDuhRaptorsAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ServicesLookUpController : ControllerBase
+    public class ServicesLookUpController : ControllerBase, IServicesLookUpController
     {
         private readonly ServicesLookUpRepository _repository;
 

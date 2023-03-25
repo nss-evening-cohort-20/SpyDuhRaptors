@@ -13,23 +13,23 @@ namespace SpyDuhRaptorsAPI.Repositories
                                                  ,s.AvalibleToHire
                                                  ,sl.Id
                                                  ,sl.Name
-                                                FROM Services s
+                                                FROM UserServices s
                                                 JOIN ServicesLookUp sl on sl.Id = s.ServiceId ";
 
-        private const string _servicesInsert = @"INSERT INTO Services
+        private const string _servicesInsert = @"INSERT INTO UserServices
                                                (Id, ServiceId, AvailibleToHire)
                                                 OUTPUT INSERTED.Id
                                                 VALUES
                                                (@Id, @ServiceId, @AvailibleToHire)";
 
-        private const string _servicesUpdate = @"UPDATE Services
+        private const string _servicesUpdate = @"UPDATE UserServices
                                                 SET Id = @Id
                                                 ,Name = @Name
                                                 ,ServiceId = @ServiceId
                                                 ,AvailibleToHire = @AvailibleToHire
                                                 WHERE Id = @id";
 
-        private const string _servicesDelete = @"DELETE FROM Services
+        private const string _servicesDelete = @"DELETE FROM UserServices
                                                 WHERE Id = @id";
 
         public ServicesRepository(IConfiguration configuration) : base(configuration)

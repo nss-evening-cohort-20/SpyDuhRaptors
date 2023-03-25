@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SpyDuhRaptorsAPI.Repositories
 {
-    public class ServicesLookUpRepository : BaseRepository
+    public class ServicesLookUpRepository : BaseRepository, IServicesLookUpRepository
     {
         private const string _servicesLookUpSelect = @"SELECT sl.Id
                                                         ,sl.Name
@@ -21,7 +21,8 @@ namespace SpyDuhRaptorsAPI.Repositories
             conn.Open();
 
             using var cmd = conn.CreateCommand();
-            cmd.CommandText = _servicesLookUpSelect;
+            cmd.CommandText = @"Select Id,Name
+                                   From ServicesLookUp";
 
             using var reader = cmd.ExecuteReader();
             List<ServicesLookUp> results = new();
