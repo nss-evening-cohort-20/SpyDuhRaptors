@@ -36,24 +36,24 @@ namespace SpyDuhRaptorsAPI.Repositories
         {
         }
 
-        public static IRelationshipsRepository GetServices(string args)
-        {
-            using var conn = Connection;
-            conn.Open();
+        //public IRelationshipsRepository GetServices(string args)
+        //{
+        //    using var conn = Connection;
+        //    conn.Open();
 
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = _servicesSelect;
+        //    using var cmd = conn.CreateCommand();
+        //    cmd.CommandText = _servicesSelect;
 
-            using var reader = cmd.ExecuteReader();
-            List<Services> results = new();
+        //    using var reader = cmd.ExecuteReader();
+        //    List<Services> results = new();
 
-            while (reader.Read())
-            {
-                results.Add(ServicesFromReader(reader));
-            }
+        //    while (reader.Read())
+        //    {
+        //        results.Add(ServicesFromReader(reader));
+        //    }
 
-            return results;
-        }
+        //    return results;
+        //}
 
         public Services? GetById(int id)
         {
@@ -136,6 +136,11 @@ namespace SpyDuhRaptorsAPI.Repositories
                             
                 }
             };
+        }
+
+        public List<Services> GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
