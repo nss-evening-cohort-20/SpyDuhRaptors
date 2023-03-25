@@ -17,6 +17,8 @@ namespace SpyDuhRaptorsAPI
             builder.Services.AddTransient<IAgencyRepository, AgencyRepository>();
             builder.Services.AddTransient<ICountryRepository, CountryRepository>();
             builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddTransient<IServicesRepository, ServicesRepository>();
+            builder.Services.AddTransient<IServicesLookUpRepository, ServicesLookUpRepository>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
