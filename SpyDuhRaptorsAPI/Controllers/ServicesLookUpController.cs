@@ -7,11 +7,11 @@ namespace SpyDuhRaptorsAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ServicesLookUpController : ControllerBase, IServicesLookUpController
+    public class ServicesLookUpController : ControllerBase
     {
-        private readonly ServicesLookUpRepository _repository;
+        private readonly IServicesLookUpRepository _repository;
 
-        public ServicesLookUpController(ServicesLookUpRepository repository)
+        public ServicesLookUpController(IServicesLookUpRepository repository)
         {
             _repository = repository;
         }

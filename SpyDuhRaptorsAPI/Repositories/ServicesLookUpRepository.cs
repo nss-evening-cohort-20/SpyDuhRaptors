@@ -21,8 +21,7 @@ namespace SpyDuhRaptorsAPI.Repositories
             conn.Open();
 
             using var cmd = conn.CreateCommand();
-            cmd.CommandText = @"Select Id,Name
-                                   From ServicesLookUp";
+            cmd.CommandText = _servicesLookUpSelect;
 
             using var reader = cmd.ExecuteReader();
             List<ServicesLookUp> results = new();
