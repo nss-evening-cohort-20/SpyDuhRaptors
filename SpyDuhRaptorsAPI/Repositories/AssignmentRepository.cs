@@ -89,7 +89,7 @@ namespace SpyDuhRaptorsAPI.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
 
-                    cmd.CommandText = @"INSERT INTO ASSIGNMENT VALES (@Name,@Location,@StartTS,@EndTS,@IsUnderCover)";
+                    cmd.CommandText = @"INSERT INTO Assignment (Name, Location, StartTS, EndTS, IsUnderCover) OUTPUT INSERTED.Id VALUES (@Name,@Location,@StartTS,@EndTS,@IsUnderCover)";
 
 
                     cmd.Parameters.AddWithValue("@Name", variety.Name);
@@ -116,7 +116,7 @@ namespace SpyDuhRaptorsAPI.Repositories
                                Location = @Location,
                                StartTS = @StartTS,
                                EndTS = @EndTS,
-                               IsUnderCover = @IsUnderCover,
+                               IsUnderCover = @IsUnderCover
                          WHERE Id = @id";
                     cmd.Parameters.AddWithValue("@id", variety.Id);
                     cmd.Parameters.AddWithValue("@Name", variety.Name);
