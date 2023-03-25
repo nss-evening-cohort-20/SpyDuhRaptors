@@ -36,7 +36,7 @@ namespace SpyDuhRaptorsAPI.Repositories
         {
         }
 
-        public List<Services> GetAll()
+        public static IRelationshipsRepository GetServices(string args)
         {
             using var conn = Connection;
             conn.Open();

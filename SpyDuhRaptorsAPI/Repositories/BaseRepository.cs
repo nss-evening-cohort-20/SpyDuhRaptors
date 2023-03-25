@@ -8,11 +8,16 @@ namespace SpyDuhRaptorsAPI.Repositories
 
         public BaseRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _connectionString = configuration.GetConnectionString("LocalConnection");
         }
 
-        protected SqlConnection Connection => new(_connectionString);
-
+        protected SqlConnection Connection
+        {
+            get
+            {
+                return new SqlConnection(_connectionString);
+            }
+        }
     }
 
 }

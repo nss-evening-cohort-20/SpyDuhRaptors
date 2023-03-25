@@ -7,9 +7,16 @@ namespace SpyDuhRaptorsAPI
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+
+            builder.Services.AddTransient<IRelationshipsRepository, RelationshipsRepository>();
+            builder.Services.AddTransient<IAssignmentRepository, AssignmentRepository>();
+            builder.Services.AddTransient<IAgencyRepository, AgencyRepository>();
+            builder.Services.AddTransient<ICountryRepository, CountryRepository>();
+            builder.Services.AddTransient<IUserRepository, UserRepository>();
             builder.Services.AddTransient<IServicesRepository, ServicesRepository>();
             builder.Services.AddTransient<IServicesLookUpRepository, ServicesLookUpRepository>();
             builder.Services.AddControllers();
